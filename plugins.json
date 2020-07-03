@@ -1,0 +1,13 @@
+{
+  "plugin_name": "LangAPI",
+  "plugin_scope": "langapi",
+  "plugin_exec": "main.js",
+  "command_map": {},
+  "author": "Kaysil",
+  "version": "2.0",
+  "node_depends": {
+    "fs": "*",
+    "path": "*"
+  },
+  "complied_for": "0.5.0"
+}
