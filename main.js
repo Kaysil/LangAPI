@@ -26,7 +26,7 @@ function createNewLang (langFile, langData) {
 			return;
 		} else {
 			try {
-			fs.writeFileSync(path.join(langDir, langFile), JSON.stringify(langData));
+			fs.writeFileSync(path.join(langDir, langFile), JSON.stringify(langData, null, 3));
 			} catch (err) {
 				return {
 					err: err
@@ -35,27 +35,21 @@ function createNewLang (langFile, langData) {
 		}
 }
 
-function getLang (langFile, userID, langVal, oLang) {
-	  var lang = global.config.language;
+function getLang (langFile, data, langVal, oLang) {
+	  var lang = data.resolvedLang;
 
 	try {
 		langFile = JSON.parse(fs.readFileSync(path.join(langDir, langFile), {
 			encoding: "utf-8"
 		}))
 	} catch (err) {
-
+		
 	}
-
-	  if (userID && global.data.userLanguage[userID]) {
-		lang = global.data.userLanguage[userID];
 		if (!langFile[lang]) {
 		return String(langFile[oLang][langVal])
 	  } else {
 		return String(langFile[lang][langVal])
 	  }
-	} else {
-		return String(langFile[oLang][langVal])
-	}
 }
 
 module.exports = {
